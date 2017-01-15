@@ -10,30 +10,25 @@ class JsonSpec extends FlatSpec with Matchers {
   val people = List(alice, bob)
 
   "JsonWriter" should "write a String" in {
-    pending
-    // jsonify("Hello") should equal(JsString("Hello"))
+    jsonify("Hello") should equal(JsString("Hello"))
   }
 
   it should "write an Int" in {
-    pending
-    // jsonify(123) should equal(JsNumber(123.0))
+    jsonify(123) should equal(JsNumber(123.0))
   }
 
   it should "write an Email" in {
-    pending
-    // jsonify(alice.email) should equal(JsString(alice.email.address))
+    jsonify(alice.email) should equal(JsString(alice.email.address))
   }
 
   it should "write a Person" in {
-    pending
-    // jsonify(bob) should equal(JsObject(Seq(
-    //   "name"  -> JsString(bob.name),
-    //   "email" -> JsString(bob.email.address)
-    // )))
+    jsonify(bob) should equal(JsObject(Seq(
+       "name"  -> JsString(bob.name),
+       "email" -> JsString(bob.email.address)
+     )))
   }
 
   it should "write a List[Person]" in {
-    pending
-    // jsonify(people) should equal(JsArray(Seq(jsonify(alice), jsonify(bob))))
+    jsonify(people) should equal(JsArray(Seq(jsonify(alice), jsonify(bob))))
   }
 }

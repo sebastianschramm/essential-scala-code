@@ -51,48 +51,50 @@ object TestMethods {
   import TestData.directors
 
   def directorsWithBackCatalogOfSize(numberOfFilms: Int): Seq[Director] =
-    ???
+    directors.filter(_.films.size >= numberOfFilms)
 
   def directorsBornBefore(year: Int): Seq[Director] =
-    ???
+    directors.filter(_.yearOfBirth < year)
 
   def directorsBornBeforeWithBackCatalogOfSize(year: Int, numberOfFilms: Int): Seq[Director] =
-    ???
+    directors.filter(director => director.yearOfBirth < year && director.films.size >= numberOfFilms)
 
   def namesOfFilmsByNolan: Seq[String] =
-    ???
+    directors.filter(_.lastName == "Nolan").flatMap(_.films.map(_.name))
 
   def namesOfAllFilmsByAllDirectors: Seq[String] =
-    ???
+    directors.flatMap(_.films).map(_.name)
 
-  def averageImdbRating: Double =
-    ???
+  def averageImdbRating: Double = {
+    val films = directors.flatMap(_.films).map(_.imdbRating)
+    films.sum / films.size
+  }
 
   def directorsSortedByAge(ascending: Boolean = true): Seq[Director] =
-    ???
+    directors.sortWith( (x,y) => { if(ascending)  x.yearOfBirth < y.yearOfBirth else x.yearOfBirth > y.yearOfBirth })
 
   def allFilmsSortedByImdb: Seq[Film] =
-    ???
+    directors.flatMap(_.films).sortBy(_.imdbRating)
 
   def earliestFilmByAnyDirector: Option[Film] =
-    ???
+    directors.flatMap(_.films).sortBy(_.yearOfRelease).headOption
 
   def earliestFilmsByAllDirectors: Map[Director, Option[Film]] =
-    ???
+    directors.map( director => director -> director.films.sortBy(_.yearOfRelease).headOption).toMap
 }
 
 object Main extends App {
   import TestData.directors
   import TestMethods._
 
-  // println("""directorsWithBackCatalogOfSize(3)                 == """ + directorsWithBackCatalogOfSize(3))
-  // println("""directorsBornBefore(1970)                         == """ + directorsBornBefore(1970))
-  // println("""directorsBornBeforeWithBackCatalogOfSize(1970, 5) == """ + directorsBornBeforeWithBackCatalogOfSize(1970, 5))
-  // println("""namesOfFilmsByNolan                               == """ + namesOfFilmsByNolan)
-  // println("""namesOfAllFilmsByAllDirectors                     == """ + namesOfAllFilmsByAllDirectors)
-  // println("""averageImdbRating                                 == """ + averageImdbRating)
-  // println("""directorsSortedByAge(false)                       == """ + directorsSortedByAge(false))
-  // println("""allFilmsSortedByImdb                              == """ + allFilmsSortedByImdb)
-  // println("""earliestFilmsByAllDirectors                       == """ + earliestFilmsByAllDirectors)
-  // println("""earliestFilmByAnyDirector                         == """ + earliestFilmByAnyDirector)
+  println("""directorsWithBackCatalogOfSize(3)                 == """ + directorsWithBackCatalogOfSize(3))
+  println("""directorsBornBefore(1970)                         == """ + directorsBornBefore(1970))
+  println("""directorsBornBeforeWithBackCatalogOfSize(1970, 5) == """ + directorsBornBeforeWithBackCatalogOfSize(1970, 5))
+  println("""namesOfFilmsByNolan                               == """ + namesOfFilmsByNolan)
+  println("""namesOfAllFilmsByAllDirectors                     == """ + namesOfAllFilmsByAllDirectors)
+  println("""averageImdbRating                                 == """ + averageImdbRating)
+  println("""directorsSortedByAge(false)                       == """ + directorsSortedByAge(false))
+  println("""allFilmsSortedByImdb                              == """ + allFilmsSortedByImdb)
+  println("""earliestFilmsByAllDirectors                       == """ + earliestFilmsByAllDirectors)
+  println("""earliestFilmByAnyDirector                         == """ + earliestFilmByAnyDirector)
 }
