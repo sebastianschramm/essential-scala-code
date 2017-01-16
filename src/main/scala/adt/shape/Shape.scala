@@ -13,6 +13,21 @@ object Main extends App {
   // def area(shape: Shape): Double =
   //   ???
 
+  /**
+    * Pattern matching
+    * - cmp. Java/C++ Swtich
+    * - expression
+    * - no multi match / fall-through
+    * - MatchError
+    * - Wildcard
+    * - named matches
+    * - guards
+    * - uppercase Type/lowercase variable
+    * - Nesting
+    * - List matching
+    */
+
   // println(shape1 + " " + area(shape1))
   // println(shape2 + " " + area(shape2))
+
 }
