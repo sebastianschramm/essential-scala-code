@@ -9,3 +9,5 @@ libraryDependencies ++= Seq(
 
 scalacOptions ++= Seq("-Xfatal-warnings")
 
+
+//alternative specs2 - might be slower during compiling compared to scalatest
