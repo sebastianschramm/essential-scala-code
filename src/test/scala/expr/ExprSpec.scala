@@ -11,13 +11,14 @@ class ExprSpec extends FlatSpec with Matchers {
   }
 
   "tacobell" should "NOT be a palindrome" in {
-    pending
-    // palindrome("tacobell") should equal(false)
+    //pending
+    palindrome("tacobell") should equal(false)
+    palindrome("Otto") should equal(true)
   }
 
   "factorial" should "multiply some numbers and stuff" in {  
-    pending
-    // factorial(3) should equal (3 * 2 * 1)
-    // factorial(5) should equal (5 * 4 * 3 * 2 * 1)    
+    // pending
+    factorial(3) should equal (3 * 2 * 1)
+    factorial(5) should equal (5 * 4 * 3 * 2 * 1)
   }
 }
