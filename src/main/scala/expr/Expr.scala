@@ -1,5 +1,7 @@
 package expr
 
+import scala.annotation.tailrec
+
 object Expr {
 
   // TODO: Implement methods
@@ -7,6 +9,11 @@ object Expr {
   // Advanced: recursion, fibonacci, nested
 
   def fibonacci(n:Int, prev:Int, cur:Int):Int = ???
+
+  def palindrome(input: String): Boolean = if(input.toLowerCase.reverse == input.toLowerCase) {true} else {false}
+
+  //@tailrec
+  def factorial(input:Int): Int = if(input == 0){1} else {input * factorial(input - 1)}
 
 }
 
