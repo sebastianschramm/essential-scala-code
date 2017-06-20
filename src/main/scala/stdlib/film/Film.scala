@@ -10,11 +10,16 @@ final case class Director(
     s"$firstName $lastName"
 }
 
-final case class Film(
+/*final case*/ class Film(
   name: String,
   yearOfRelease: Int,
   imdbRating: Double
-)
+) {
+
+  def copy(name: String=name, yearOfRelease:  Int = yearOfRelease, imdbRating: Double = imdbRating): Film = {
+    new Film(name, yearOfRelease, imdbRating)
+  }
+}
 
 object TestData {
   val memento           = new Film("Memento", 2000, 8.5)
